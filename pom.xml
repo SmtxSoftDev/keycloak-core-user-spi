@@ -30,4 +30,17 @@
             <version>${keycloak.version}</version>
         </dependency>
     </dependencies>
+    <build>
+        <finalName>${project.groupId}.${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler.version}</version>
+                <configuration>
+                    <release>${maven-compiler.release}</release>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
