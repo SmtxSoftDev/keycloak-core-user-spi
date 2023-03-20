@@ -5,7 +5,8 @@ import org.keycloak.storage.UserStorageProviderFactory;
 public class CoreUserStorageProviderFactory implements UserStorageProviderFactory<CoreUserStorageProvider> {
     @Override
     public CoreUserStorageProvider create(KeycloakSession keycloakSession, ComponentModel componentModel) {
-        return new CoreUserStorageProvider(keycloakSession, componentModel);
+        CoreUserRepository repository = new CoreUserRepository();
+        return new CoreUserStorageProvider(keycloakSession, componentModel, repository);
     }
     @Override
     public String getId() {

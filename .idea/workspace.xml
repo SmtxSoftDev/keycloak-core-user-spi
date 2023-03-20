@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc6bb677-3aee-4c2e-aee0-6d9e9cffdc24" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/CoreUserStorageProvider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/CoreUserStorageProviderFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/services/org.keycloak.storage.UserStorageProviderFactory" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/CoreUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/CoreUserAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/CoreUserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CoreUserSpiProvider.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CoreUserStorageProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CoreUserStorageProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CoreUserStorageProviderFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CoreUserStorageProviderFactory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,13 +36,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.33448276&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

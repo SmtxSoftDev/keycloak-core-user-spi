@@ -20,10 +20,12 @@ public class CoreUserStorageProvider implements UserStorageProvider,
 
     private final KeycloakSession session;
     private final ComponentModel model;
+    private final CoreUserRepository repository;
 
-    public CoreUserStorageProvider(KeycloakSession session, ComponentModel model){
+    public CoreUserStorageProvider(KeycloakSession session, ComponentModel model, CoreUserRepository repository){
         this.session = session;
         this.model = model;
+        this.repository = repository;
     }
 
     @Override
