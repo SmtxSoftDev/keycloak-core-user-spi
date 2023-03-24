@@ -5,19 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc6bb677-3aee-4c2e-aee0-6d9e9cffdc24" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/repositories/CoreUserMockRepositoryImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/data/repositories/CoreUserRepositoryImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/entities/CoreUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/interfaces/ICoreUserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CoreUser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CoreUserAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/UserAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CoreUserRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CoreUserStorageProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/CoreUserStorageProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CoreUserStorageProviderFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/CoreUserStorageProviderFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/services/org.keycloak.storage.UserStorageProviderFactory" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/services/org.keycloak.storage.UserStorageProviderFactory" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
