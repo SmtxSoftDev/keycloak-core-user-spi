@@ -1,7 +1,6 @@
-package presentation;
+package presentation.keycloak;
 
 import data.repositories.CoreUserMockRepositoryImpl;
-import data.repositories.CoreUserRepositoryImpl;
 import domain.interfaces.ICoreUserRepository;
 import org.keycloak.component.ComponentModel;
 import org.keycloak.models.KeycloakSession;

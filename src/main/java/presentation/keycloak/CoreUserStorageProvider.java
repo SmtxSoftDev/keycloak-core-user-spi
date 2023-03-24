@@ -1,4 +1,4 @@
-package presentation;
+package presentation.keycloak;
 
 import domain.entities.CoreUser;
 import domain.interfaces.ICoreUserRepository;
