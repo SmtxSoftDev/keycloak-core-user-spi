@@ -5,12 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc6bb677-3aee-4c2e-aee0-6d9e9cffdc24" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/CoreUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/CoreUserAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/CoreUserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/data/repositories/CoreUserMockRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/data/repositories/CoreUserRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/domain/entities/CoreUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/domain/interfaces/ICoreUserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CoreUserStorageProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CoreUserStorageProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CoreUserStorageProviderFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CoreUserStorageProviderFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CoreUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CoreUserAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/UserAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CoreUserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CoreUserStorageProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/CoreUserStorageProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CoreUserStorageProviderFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/CoreUserStorageProviderFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/services/org.keycloak.storage.UserStorageProviderFactory" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/services/org.keycloak.storage.UserStorageProviderFactory" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +27,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -44,9 +52,14 @@
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.33448276&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.tabs&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="data.repositories" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

@@ -1,25 +1,26 @@
+package presentation;
+
+import domain.entities.CoreUser;
 import org.keycloak.common.util.MultivaluedHashMap;
 import org.keycloak.component.ComponentModel;
 import org.keycloak.credential.LegacyUserCredentialManager;
-import org.keycloak.models.KeycloakSession;
-import org.keycloak.models.RealmModel;
-import org.keycloak.models.SubjectCredentialManager;
-import org.keycloak.models.UserModel;
+import org.keycloak.models.*;
 import org.keycloak.storage.StorageId;
 import org.keycloak.storage.adapter.AbstractUserAdapter;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Stream;
 
-public class CoreUserAdapter extends AbstractUserAdapter {
+public class UserAdapter extends AbstractUserAdapter {
 
     private final CoreUser user;
 
-    public CoreUserAdapter(KeycloakSession session,
-                           RealmModel realm,
-                           ComponentModel storageProviderModel,
-                           CoreUser user) {
+    public UserAdapter(KeycloakSession session,
+                       RealmModel realm,
+                       ComponentModel storageProviderModel,
+                       CoreUser user) {
         super(session, realm, storageProviderModel);
         this.storageId = new StorageId(storageProviderModel.getId(), user.getId());
         this.user = user;
@@ -27,7 +28,7 @@ public class CoreUserAdapter extends AbstractUserAdapter {
 
     @Override
     public String getUsername() {
-        return user.getName();
+        return user.getLogin();
     }
 
     @Override
@@ -36,8 +37,28 @@ public class CoreUserAdapter extends AbstractUserAdapter {
     }
 
     @Override
+    public String getFirstName() {
+        return user.getFirstName();
+    }
+
+    @Override
+    public String getLastName() {
+        return user.getLastName();
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return user.isEnabled();
+    }
+
+    @Override
     public SubjectCredentialManager credentialManager() {
         return new LegacyUserCredentialManager(session, realm, this);
+    }
+
+    @Override
+    public Long getCreatedTimestamp() {
+        return user.getCreated();
     }
 
     @Override
@@ -46,6 +67,8 @@ public class CoreUserAdapter extends AbstractUserAdapter {
                 = new MultivaluedHashMap<>();
         attributes.add(UserModel.USERNAME, getUsername());
         attributes.add(UserModel.EMAIL, getEmail());
+        attributes.add(UserModel.FIRST_NAME, getFirstName());
+        attributes.add(UserModel.LAST_NAME, getLastName());
         return attributes;
     }
 
@@ -54,5 +77,10 @@ public class CoreUserAdapter extends AbstractUserAdapter {
         if(name.equals(UserModel.USERNAME))
             return Stream.of(getUsername());
         return Stream.empty();
+    }
+
+    @Override
+    protected Set<RoleModel> getRoleMappingsInternal() {
+        return Set.of();
     }
 }

@@ -1,11 +1,14 @@
+package presentation;
+
+import domain.entities.CoreUser;
+import domain.interfaces.ICoreUserRepository;
 import org.keycloak.component.ComponentModel;
 import org.keycloak.credential.CredentialInput;
 import org.keycloak.credential.CredentialInputUpdater;
 import org.keycloak.credential.CredentialInputValidator;
-import org.keycloak.models.GroupModel;
-import org.keycloak.models.KeycloakSession;
-import org.keycloak.models.RealmModel;
-import org.keycloak.models.UserModel;
+import org.keycloak.models.*;
+import org.keycloak.models.credential.PasswordCredentialModel;
+import org.keycloak.storage.StorageId;
 import org.keycloak.storage.UserStorageProvider;
 import org.keycloak.storage.user.UserLookupProvider;
 import org.keycloak.storage.user.UserQueryProvider;
@@ -20,9 +23,9 @@ public class CoreUserStorageProvider implements UserStorageProvider,
 
     private final KeycloakSession session;
     private final ComponentModel model;
-    private final CoreUserRepository repository;
+    private final ICoreUserRepository repository;
 
-    public CoreUserStorageProvider(KeycloakSession session, ComponentModel model, CoreUserRepository repository){
+    public CoreUserStorageProvider(KeycloakSession session, ComponentModel model, ICoreUserRepository repository){
         this.session = session;
         this.model = model;
         this.repository = repository;
@@ -30,22 +33,28 @@ public class CoreUserStorageProvider implements UserStorageProvider,
 
     @Override
     public boolean supportsCredentialType(String s) {
-        return false;
+        return PasswordCredentialModel.TYPE.equals(s);
     }
 
     @Override
     public boolean isConfiguredFor(RealmModel realmModel, UserModel userModel, String s) {
-        return false;
+        return supportsCredentialType(s);
     }
 
     @Override
     public boolean isValid(RealmModel realmModel, UserModel userModel, CredentialInput credentialInput) {
-        return false;
+        if(!supportsCredentialType(credentialInput.getType()) || !(credentialInput instanceof UserCredentialModel))
+            return false;
+        UserCredentialModel cred = (UserCredentialModel)credentialInput;
+        return repository.validateCredentials(userModel.getUsername(), cred.getChallengeResponse());
     }
 
     @Override
     public boolean updateCredential(RealmModel realmModel, UserModel userModel, CredentialInput credentialInput) {
-        return false;
+        if(!supportsCredentialType(credentialInput.getType()) || !(credentialInput instanceof UserCredentialModel))
+            return false;
+        UserCredentialModel cred = (UserCredentialModel)credentialInput;
+        return repository.updateCredentials(userModel.getUsername(), cred.getChallengeResponse());
     }
 
     @Override
@@ -55,7 +64,7 @@ public class CoreUserStorageProvider implements UserStorageProvider,
 
     @Override
     public Stream<String> getDisableableCredentialTypesStream(RealmModel realmModel, UserModel userModel) {
-        return null;
+        return Stream.empty();
     }
 
     @Override
@@ -65,37 +74,51 @@ public class CoreUserStorageProvider implements UserStorageProvider,
 
     @Override
     public UserModel getUserById(RealmModel realmModel, String s) {
-        return null;
+        String externalId = StorageId.externalId(s);
+        return new UserAdapter(session, realmModel, model, repository.findUserById(externalId));
     }
 
     @Override
     public UserModel getUserByUsername(RealmModel realmModel, String s) {
+        CoreUser user = repository.findUserByLogin(s);
+        if (user != null)
+            return new UserAdapter(session, realmModel, model, user);
         return null;
     }
 
     @Override
     public UserModel getUserByEmail(RealmModel realmModel, String s) {
+        CoreUser user = repository.findUserByEmail(s);
+        if(user != null)
+            return new UserAdapter(session, realmModel, model, user);
         return null;
+    }
+
+    @Override
+    public Stream<UserModel> searchForUserStream(RealmModel realmModel, String s) {
+        return repository.findUsers(s).stream().
+                map(user -> new UserAdapter(session, realmModel, model, user));
     }
 
     @Override
     public Stream<UserModel> searchForUserStream(RealmModel realmModel, String s, Integer integer, Integer integer1) {
-        return null;
+        return searchForUserStream(realmModel, s);
     }
 
     @Override
     public Stream<UserModel> searchForUserStream(RealmModel realmModel, Map<String, String> map, Integer integer, Integer integer1) {
-        return null;
+        return repository.getAllUsers().stream()
+                .map(user -> new UserAdapter(session, realmModel, model, user));
     }
 
     @Override
     public Stream<UserModel> getGroupMembersStream(RealmModel realmModel, GroupModel groupModel, Integer integer, Integer integer1) {
-        return null;
+        return Stream.empty();
     }
 
     @Override
     public Stream<UserModel> searchForUserByUserAttributeStream(RealmModel realmModel, String s, String s1) {
-        return null;
+        return Stream.empty();
     }
 
     @Override
