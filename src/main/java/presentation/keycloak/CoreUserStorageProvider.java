@@ -16,10 +16,13 @@ import org.keycloak.storage.user.UserRegistrationProvider;
 
 import java.util.Map;
 import java.util.stream.Stream;
+import java.util.logging.Logger;
 
 public class CoreUserStorageProvider implements UserStorageProvider,
         UserLookupProvider, UserQueryProvider, CredentialInputUpdater, CredentialInputValidator,
         UserRegistrationProvider {
+
+    Logger logger = Logger.getLogger(CoreUserStorageProvider.class.getName());
 
     private final KeycloakSession session;
     private final ComponentModel model;
