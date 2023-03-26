@@ -1,8 +1,0 @@
-presentation\keycloak\CoreUserStorageProviderFactory.class
-presentation\keycloak\UserAdapter.class
-presentation\keycloak\CoreUserStorageProvider.class
-data\repositories\CoreUserMockRepositoryImpl.class
-domain\interfaces\ICoreUserRepository.class
-domain\entities\CoreUser.class
-domain\helpers\Constants.class
-data\repositories\CoreUserRepositoryImpl.class

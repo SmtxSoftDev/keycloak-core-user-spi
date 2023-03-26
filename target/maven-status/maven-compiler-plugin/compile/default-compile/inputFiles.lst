@@ -1,8 +1,0 @@
-D:\Projects\core-user-spi\src\main\java\data\repositories\CoreUserMockRepositoryImpl.java
-D:\Projects\core-user-spi\src\main\java\presentation\keycloak\CoreUserStorageProvider.java
-D:\Projects\core-user-spi\src\main\java\presentation\keycloak\UserAdapter.java
-D:\Projects\core-user-spi\src\main\java\data\repositories\CoreUserRepositoryImpl.java
-D:\Projects\core-user-spi\src\main\java\domain\interfaces\ICoreUserRepository.java
-D:\Projects\core-user-spi\src\main\java\domain\entities\CoreUser.java
-D:\Projects\core-user-spi\src\main\java\domain\helpers\Constants.java
-D:\Projects\core-user-spi\src\main\java\presentation\keycloak\CoreUserStorageProviderFactory.java
