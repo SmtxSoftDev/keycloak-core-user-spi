@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc6bb677-3aee-4c2e-aee0-6d9e9cffdc24" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/helpers/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/keycloak/CoreUserStorageProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/keycloak/CoreUserStorageProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/keycloak/CoreUserStorageProviderFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/presentation/keycloak/CoreUserStorageProviderFactory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
