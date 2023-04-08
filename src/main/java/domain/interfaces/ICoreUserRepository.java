@@ -1,19 +1,19 @@
 package domain.interfaces;
 
-import domain.entities.CoreUser;
+import domain.entities.User;
 
 import java.util.List;
 
 public interface ICoreUserRepository {
-    public List<CoreUser> getAllUsers();
+    public List<User> getAllUsers();
 
-    public CoreUser findUserById(String id);
+    public User findUserById(String id);
 
-    public CoreUser findUserByLogin(String Login);
+    public User findUserByLogin(String Login);
 
-    public CoreUser findUserByEmail(String Email);
+    public User findUserByEmail(String Email);
 
-    public List<CoreUser> findUsers(String query);
+    public List<User> findUsers(String query);
     public boolean validateCredentials(String Login, String Password);
 
     public boolean updateCredentials(String Login, String Password);

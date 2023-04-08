@@ -1,6 +1,6 @@
 package data.repositories;
 
-import domain.entities.CoreUser;
+import domain.entities.User;
 import domain.interfaces.ICoreUserRepository;
 
 import java.util.Arrays;
@@ -8,34 +8,34 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class CoreUserMockRepositoryImpl implements ICoreUserRepository {
-    private final List<CoreUser> users;
+    private final List<User> users;
 
     public CoreUserMockRepositoryImpl() {
         Long created = System.currentTimeMillis();
         users = Arrays.asList(
-                new CoreUser("1", "Администратор", "Администратор", "admin10", "admin10", "admin@gmail.com", created, true),
-                new CoreUser("2", "Иван", "Иван", "ivanow", "ivanow", "ivanow@gmail.com", created, true),
-                new CoreUser("3", "Владимир", "Суслов", "vladimir", "vladimir", "vladimir@gmail.com", created, true),
-                new CoreUser("4", "Александр", "Андреевич", "alexander", "alexandr", "alexandr@gmail.com", created, true));
+                new User("1", "Администратор", "Администратор", "admin10", "admin10", "admin@gmail.com", created, true),
+                new User("2", "Иван", "Иван", "ivanow", "ivanow", "ivanow@gmail.com", created, true),
+                new User("3", "Владимир", "Суслов", "vladimir", "vladimir", "vladimir@gmail.com", created, true),
+                new User("4", "Александр", "Андреевич", "alexander", "alexandr", "alexandr@gmail.com", created, true));
     }
 
-    public List<CoreUser> getAllUsers(){
+    public List<User> getAllUsers(){
         return users;
     }
 
-    public CoreUser findUserById(String id) {
+    public User findUserById(String id) {
         return users.stream().filter(user -> user.getId().equals(id)).findFirst().orElse(null);
     }
 
-    public CoreUser findUserByLogin(String Login) {
+    public User findUserByLogin(String Login) {
         return users.stream().filter(user -> user.getLogin().equals(Login)).findFirst().orElse(null);
     }
 
-    public CoreUser findUserByEmail(String Email) {
+    public User findUserByEmail(String Email) {
         return users.stream().filter(user -> user.getEmail().equals(Email)).findFirst().orElse(null);
     }
 
-    public List<CoreUser> findUsers(String query) {
+    public List<User> findUsers(String query) {
         return users.stream()
                 .filter(user -> user.getName().contains(query) ||
                         user.getEmail().contains(query) ||

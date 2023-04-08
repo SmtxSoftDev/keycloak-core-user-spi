@@ -1,6 +1,6 @@
 package presentation.keycloak;
 
-import domain.entities.CoreUser;
+import domain.entities.User;
 import domain.interfaces.ICoreUserRepository;
 import org.keycloak.component.ComponentModel;
 import org.keycloak.credential.CredentialInput;
@@ -83,7 +83,7 @@ public class CoreUserStorageProvider implements UserStorageProvider,
 
     @Override
     public UserModel getUserByUsername(RealmModel realmModel, String s) {
-        CoreUser user = repository.findUserByLogin(s);
+        User user = repository.findUserByLogin(s);
         if (user != null)
             return new UserAdapter(session, realmModel, model, user);
         return null;
@@ -91,7 +91,7 @@ public class CoreUserStorageProvider implements UserStorageProvider,
 
     @Override
     public UserModel getUserByEmail(RealmModel realmModel, String s) {
-        CoreUser user = repository.findUserByEmail(s);
+        User user = repository.findUserByEmail(s);
         if(user != null)
             return new UserAdapter(session, realmModel, model, user);
         return null;

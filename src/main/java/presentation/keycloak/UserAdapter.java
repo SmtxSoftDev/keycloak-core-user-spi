@@ -1,6 +1,6 @@
 package presentation.keycloak;
 
-import domain.entities.CoreUser;
+import domain.entities.User;
 import org.keycloak.common.util.MultivaluedHashMap;
 import org.keycloak.component.ComponentModel;
 import org.keycloak.credential.LegacyUserCredentialManager;
@@ -15,12 +15,12 @@ import java.util.stream.Stream;
 
 public class UserAdapter extends AbstractUserAdapter {
 
-    private final CoreUser user;
+    private final User user;
 
     public UserAdapter(KeycloakSession session,
                        RealmModel realm,
                        ComponentModel storageProviderModel,
-                       CoreUser user) {
+                       User user) {
         super(session, realm, storageProviderModel);
         this.storageId = new StorageId(storageProviderModel.getId(), user.getId());
         this.user = user;
