@@ -1,11 +1,11 @@
 package data.repositories;
 
 import domain.entities.User;
-import domain.interfaces.ICoreUserRepository;
+import domain.interfaces.IUserRepository;
 
 import java.util.List;
 
-public class CoreUserRepositoryImpl implements ICoreUserRepository {
+public class UserRepositoryImpl implements IUserRepository {
     @Override
     public List<User> getAllUsers() {
         return null;

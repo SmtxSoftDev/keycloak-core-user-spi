@@ -1,16 +1,16 @@
 package data.repositories;
 
 import domain.entities.User;
-import domain.interfaces.ICoreUserRepository;
+import domain.interfaces.IUserRepository;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CoreUserMockRepositoryImpl implements ICoreUserRepository {
+public class UserMockRepositoryImpl implements IUserRepository {
     private final List<User> users;
 
-    public CoreUserMockRepositoryImpl() {
+    public UserMockRepositoryImpl() {
         Long created = System.currentTimeMillis();
         users = Arrays.asList(
                 new User("1", "Администратор", "Администратор", "admin10", "admin10", "admin@gmail.com", created, true),

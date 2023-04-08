@@ -1,4 +1,4 @@
-package presentation.keycloak;
+package infrastructure.keycloak;
 
 import domain.entities.User;
 import org.keycloak.common.util.MultivaluedHashMap;

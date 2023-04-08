@@ -4,7 +4,7 @@ import domain.entities.User;
 
 import java.util.List;
 
-public interface ICoreUserRepository {
+public interface IUserRepository {
     public List<User> getAllUsers();
 
     public User findUserById(String id);

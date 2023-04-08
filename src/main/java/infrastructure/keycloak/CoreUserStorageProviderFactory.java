@@ -1,8 +1,8 @@
-package presentation.keycloak;
+package infrastructure.keycloak;
 
-import data.repositories.CoreUserMockRepositoryImpl;
+import data.repositories.UserMockRepositoryImpl;
 import domain.helpers.Constants;
-import domain.interfaces.ICoreUserRepository;
+import domain.interfaces.IUserRepository;
 import org.keycloak.component.ComponentModel;
 import org.keycloak.models.KeycloakSession;
 import org.keycloak.provider.ProviderConfigProperty;
@@ -14,10 +14,11 @@ import java.util.List;
 public class CoreUserStorageProviderFactory implements UserStorageProviderFactory<CoreUserStorageProvider> {
     @Override
     public CoreUserStorageProvider create(KeycloakSession keycloakSession, ComponentModel componentModel) {
-        ICoreUserRepository repository = new CoreUserMockRepositoryImpl();
-        // ICoreUserRepository repository = new CoreUserRepositoryImpl();
+        IUserRepository repository = new UserMockRepositoryImpl();
+        // IUserRepository repository = new UserRepositoryImpl();
         return new CoreUserStorageProvider(keycloakSession, componentModel, repository);
     }
+
     @Override
     public String getId() {
         return "core-user-spi";

@@ -1,7 +1,7 @@
-package presentation.keycloak;
+package infrastructure.keycloak;
 
 import domain.entities.User;
-import domain.interfaces.ICoreUserRepository;
+import domain.interfaces.IUserRepository;
 import org.keycloak.component.ComponentModel;
 import org.keycloak.credential.CredentialInput;
 import org.keycloak.credential.CredentialInputUpdater;
@@ -26,9 +26,9 @@ public class CoreUserStorageProvider implements UserStorageProvider,
 
     private final KeycloakSession session;
     private final ComponentModel model;
-    private final ICoreUserRepository repository;
+    private final IUserRepository repository;
 
-    public CoreUserStorageProvider(KeycloakSession session, ComponentModel model, ICoreUserRepository repository){
+    public CoreUserStorageProvider(KeycloakSession session, ComponentModel model, IUserRepository repository){
         this.session = session;
         this.model = model;
         this.repository = repository;
