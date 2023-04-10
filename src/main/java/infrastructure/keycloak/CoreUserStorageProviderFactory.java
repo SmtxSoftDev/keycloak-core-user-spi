@@ -15,7 +15,7 @@ public class CoreUserStorageProviderFactory implements UserStorageProviderFactor
     @Override
     public CoreUserStorageProvider create(KeycloakSession keycloakSession, ComponentModel componentModel) {
         IUserRepository repository = new UserMockRepositoryImpl();
-        // IUserRepository repository = new UserRepositoryImpl();
+        //IUserRepository repository = new UserRepositoryImpl();
         return new CoreUserStorageProvider(keycloakSession, componentModel, repository);
     }
 

@@ -17,6 +17,7 @@ public class UserMockRepositoryImpl implements IUserRepository {
                 new User("2", "Иван", "Иван", "ivanow", "ivanow", "ivanow@gmail.com", created, true),
                 new User("3", "Владимир", "Суслов", "vladimir", "vladimir", "vladimir@gmail.com", created, true),
                 new User("4", "Александр", "Андреевич", "alexander", "alexandr", "alexandr@gmail.com", created, true));
+
     }
 
     public List<User> getAllUsers(){
@@ -37,7 +38,8 @@ public class UserMockRepositoryImpl implements IUserRepository {
 
     public List<User> findUsers(String query) {
         return users.stream()
-                .filter(user -> user.getName().contains(query) ||
+                .filter(user -> user.getFirstName().contains(query) ||
+                        user.getLastName().contains(query) ||
                         user.getEmail().contains(query) ||
                         user.getLogin().contains(query))
                 .collect(Collectors.toList());
