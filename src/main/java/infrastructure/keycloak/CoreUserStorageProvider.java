@@ -110,8 +110,7 @@ public class CoreUserStorageProvider implements UserStorageProvider,
 
     @Override
     public Stream<UserModel> searchForUserStream(RealmModel realmModel, Map<String, String> map, Integer integer, Integer integer1) {
-        return repository.getAllUsers().stream()
-                .map(user -> new UserAdapter(session, realmModel, model, user));
+        return Stream.empty();
     }
 
     @Override

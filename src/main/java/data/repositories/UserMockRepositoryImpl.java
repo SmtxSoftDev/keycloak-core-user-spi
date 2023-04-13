@@ -20,22 +20,22 @@ public class UserMockRepositoryImpl implements IUserRepository {
 
     }
 
-    public List<User> getAllUsers(){
-        return users;
-    }
-
+    @Override
     public User findUserById(String id) {
         return users.stream().filter(user -> user.getId().equals(id)).findFirst().orElse(null);
     }
 
+    @Override
     public User findUserByLogin(String Login) {
         return users.stream().filter(user -> user.getLogin().equals(Login)).findFirst().orElse(null);
     }
 
+    @Override
     public User findUserByEmail(String Email) {
         return users.stream().filter(user -> user.getEmail().equals(Email)).findFirst().orElse(null);
     }
 
+    @Override
     public List<User> findUsers(String query) {
         return users.stream()
                 .filter(user -> user.getFirstName().contains(query) ||
@@ -45,10 +45,12 @@ public class UserMockRepositoryImpl implements IUserRepository {
                 .collect(Collectors.toList());
     }
 
+    @Override
     public boolean validateCredentials(String Login, String Password) {
         return findUserByLogin(Login).getPassword().equals(Password);
     }
 
+    @Override
     public boolean updateCredentials(String Login, String Password){
         findUserByLogin(Login).setPassword(Password);
         return true;
