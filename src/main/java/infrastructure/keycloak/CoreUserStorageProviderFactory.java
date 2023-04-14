@@ -3,6 +3,8 @@ package infrastructure.keycloak;
 import data.repositories.UserRepositoryImpl;
 import domain.helpers.Constants;
 import domain.interfaces.IUserRepository;
+import infrastructure.utils.HibernateUtil;
+import org.hibernate.SessionFactory;
 import org.keycloak.component.ComponentModel;
 import org.keycloak.models.KeycloakSession;
 import org.keycloak.provider.ProviderConfigProperty;
@@ -14,8 +16,8 @@ import java.util.List;
 public class CoreUserStorageProviderFactory implements UserStorageProviderFactory<CoreUserStorageProvider> {
     @Override
     public CoreUserStorageProvider create(KeycloakSession keycloakSession, ComponentModel componentModel) {
-        //IUserRepository repository = new UserMockRepositoryImpl();
-        IUserRepository repository = new UserRepositoryImpl();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory(componentModel);
+        IUserRepository repository = new UserRepositoryImpl(sessionFactory);
         return new CoreUserStorageProvider(keycloakSession, componentModel, repository);
     }
 

@@ -2,7 +2,6 @@ package data.repositories;
 
 import domain.entities.User;
 import domain.interfaces.IUserRepository;
-import infrastructure.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -13,8 +12,8 @@ public class UserRepositoryImpl implements IUserRepository {
 
     private SessionFactory sessionFactory;
 
-    public UserRepositoryImpl(){
-        sessionFactory = HibernateUtil.getSessionFactory();
+    public UserRepositoryImpl(SessionFactory sessionFactory){
+        this.sessionFactory = sessionFactory;
     }
 
     @Override
