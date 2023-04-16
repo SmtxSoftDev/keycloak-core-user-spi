@@ -46,7 +46,7 @@ public class UserRepositoryImpl implements IUserRepository {
 
         try(Session session = sessionFactory.openSession()){
             Query<User> userQuery =
-                    session.createQuery("from User where (FirstName = :FirstName OR LastName = %:LastName%)");
+                    session.createQuery("from User where (FirstName = :FirstName OR LastName = :LastName)");
             userQuery.setParameter("FirstName", query);
             userQuery.setParameter("LastName", query);
             return userQuery.list();
