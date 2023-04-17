@@ -43,7 +43,6 @@ public class UserRepositoryImpl implements IUserRepository {
 
     @Override
     public List<User> findUsers(String query) {
-
         try(Session session = sessionFactory.openSession()){
             Query<User> userQuery =
                     session.createQuery("from User where (FirstName = :FirstName OR LastName = :LastName)");
