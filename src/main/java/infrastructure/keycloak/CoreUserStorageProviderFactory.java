@@ -31,7 +31,7 @@ public class CoreUserStorageProviderFactory implements UserStorageProviderFactor
     public List<ProviderConfigProperty> getConfigProperties() {
         List<String> driverListOfDb = Arrays.asList("MSSQL", "MySql", "Postgresql");
         return ProviderConfigurationBuilder.create()
-                .property("Database driver", "Database driver", "Select database driver", ProviderConfigProperty.LIST_TYPE, "", driverListOfDb)
+                .property(Constants.DB_DRIVERS, "Database driver", "Select database driver", ProviderConfigProperty.LIST_TYPE, "", driverListOfDb)
                 .property(Constants.DB_SERVER, "Database server", "Address of Sql server", ProviderConfigProperty.STRING_TYPE, "", null)
                 .property(Constants.DB_NAME, "Database name", "Database name", ProviderConfigProperty.STRING_TYPE, "", null)
                 .property(Constants.DB_USERNAME, "Database Username", "Database username", ProviderConfigProperty.STRING_TYPE, "", null)
