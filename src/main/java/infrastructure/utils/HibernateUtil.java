@@ -2,6 +2,8 @@ package infrastructure.utils;
 
 import domain.entities.User;
 import domain.helpers.Constants;
+import infrastructure.drivers.db.DatabaseDriverFactory;
+import infrastructure.drivers.db.DatabaseTypes;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -18,13 +20,9 @@ public class HibernateUtil {
 
     private static SessionFactory buildSessionFactory(ComponentModel model) {
         try {
-            Properties properties = new Properties();
-            properties.setProperty("hibernate.connection.url", "jdbc:sqlserver://"+model.get(Constants.DB_SERVER)+";databaseName="+model.get(Constants.DB_NAME)+";encrypt=false;trustServerCertificate=false");
-            properties.setProperty("hibernate.dialect", "org.hibernate.dialect.SQLServerDialect");
-            properties.setProperty("hibernate.connection.username", model.get(Constants.DB_USERNAME));
-            properties.setProperty("hibernate.connection.password", model.get(Constants.DB_PASSWORD));
-            properties.setProperty("hibernate.connection.driver_class", "com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            properties.setProperty("show_sql", "true");
+            logger.info(model.get(Constants.DB_DRIVER));
+            DatabaseTypes databaseType = DatabaseTypes.valueOf(model.get(Constants.DB_DRIVER));
+            Properties properties = DatabaseDriverFactory.getInstance(databaseType).getProperties(model);
             Configuration configuration = new Configuration();
             configuration.addProperties(properties);
             configuration.addAnnotatedClass(User.class);
