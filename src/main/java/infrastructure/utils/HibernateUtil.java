@@ -20,7 +20,6 @@ public class HibernateUtil {
 
     private static SessionFactory buildSessionFactory(ComponentModel model) {
         try {
-            logger.info(model.get(Constants.DB_DRIVER));
             DatabaseTypes databaseType = DatabaseTypes.valueOf(model.get(Constants.DB_DRIVER));
             Properties properties = DatabaseDriverFactory.getInstance(databaseType).getProperties(model);
             Configuration configuration = new Configuration();

@@ -7,10 +7,13 @@ import infrastructure.drivers.db.DatabaseTypes;
 import infrastructure.utils.HibernateUtil;
 import org.hibernate.SessionFactory;
 import org.keycloak.component.ComponentModel;
+import org.keycloak.component.ComponentValidationException;
 import org.keycloak.models.KeycloakSession;
+import org.keycloak.models.RealmModel;
 import org.keycloak.provider.ProviderConfigProperty;
 import org.keycloak.provider.ProviderConfigurationBuilder;
 import org.keycloak.storage.UserStorageProviderFactory;
+import org.keycloak.utils.StringUtil;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -40,5 +43,12 @@ public class CoreUserStorageProviderFactory implements UserStorageProviderFactor
                 .property(Constants.DB_USERNAME, "Database Username", "Database username", ProviderConfigProperty.STRING_TYPE, "", null)
                 .property(Constants.DB_PASSWORD, "Database Password", "Database password", ProviderConfigProperty.PASSWORD, "", null)
                 .build();
+    }
+
+    @Override
+    public void validateConfiguration(KeycloakSession session, RealmModel realm, ComponentModel config) throws ComponentValidationException {
+        if(StringUtil.isBlank(config.get(Constants.DB_DRIVER))){
+            throw new ComponentValidationException("Database driver is not selected, before to save please select your database driver please.");
+        }
     }
 }
