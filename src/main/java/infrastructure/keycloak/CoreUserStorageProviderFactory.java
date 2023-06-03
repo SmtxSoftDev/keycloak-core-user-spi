@@ -1,6 +1,6 @@
 package infrastructure.keycloak;
 
-import data.repositories.UserRepositoryImpl;
+import application.repositories.UserRepositoryImpl;
 import domain.helpers.Constants;
 import domain.interfaces.IUserRepository;
 import infrastructure.drivers.db.DatabaseTypes;
