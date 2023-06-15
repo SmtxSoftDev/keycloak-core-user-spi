@@ -1,9 +1,10 @@
-package infrastructure.keycloak;
+package api.keycloak;
 
-import application.repositories.UserRepositoryImpl;
+import application.services.user.IUserService;
+import application.services.user.UserService;
 import domain.helpers.Constants;
-import domain.interfaces.IUserRepository;
 import infrastructure.drivers.db.DatabaseTypes;
+import infrastructure.repositories.UserRepositoryImpl;
 import infrastructure.utils.HibernateUtil;
 import org.hibernate.SessionFactory;
 import org.keycloak.component.ComponentModel;
@@ -23,8 +24,8 @@ public class CoreUserStorageProviderFactory implements UserStorageProviderFactor
     @Override
     public CoreUserStorageProvider create(KeycloakSession keycloakSession, ComponentModel componentModel) {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory(componentModel);
-        IUserRepository repository = new UserRepositoryImpl(sessionFactory);
-        return new CoreUserStorageProvider(keycloakSession, componentModel, repository);
+        IUserService userService = new UserService(new UserRepositoryImpl(sessionFactory));
+        return new CoreUserStorageProvider(keycloakSession, componentModel, userService);
     }
 
     @Override

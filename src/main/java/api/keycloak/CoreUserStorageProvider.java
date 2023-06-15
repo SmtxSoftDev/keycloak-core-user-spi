@@ -1,7 +1,7 @@
-package infrastructure.keycloak;
+package api.keycloak;
 
+import application.services.user.IUserService;
 import domain.entities.User;
-import domain.interfaces.IUserRepository;
 import org.keycloak.component.ComponentModel;
 import org.keycloak.credential.CredentialInput;
 import org.keycloak.credential.CredentialInputUpdater;
@@ -26,12 +26,12 @@ public class CoreUserStorageProvider implements UserStorageProvider,
 
     private final KeycloakSession session;
     private final ComponentModel model;
-    private final IUserRepository repository;
+    private final IUserService userService;
 
-    public CoreUserStorageProvider(KeycloakSession session, ComponentModel model, IUserRepository repository){
+    public CoreUserStorageProvider(KeycloakSession session, ComponentModel model, IUserService userService){
         this.session = session;
         this.model = model;
-        this.repository = repository;
+        this.userService = userService;
     }
 
     @Override
@@ -49,7 +49,7 @@ public class CoreUserStorageProvider implements UserStorageProvider,
         if(!supportsCredentialType(credentialInput.getType()) || !(credentialInput instanceof UserCredentialModel))
             return false;
         UserCredentialModel cred = (UserCredentialModel)credentialInput;
-        return repository.validateCredentials(userModel.getUsername(), cred.getChallengeResponse());
+        return userService.validateCredentials(userModel.getUsername(), cred.getChallengeResponse());
     }
 
     @Override
@@ -57,7 +57,7 @@ public class CoreUserStorageProvider implements UserStorageProvider,
         if(!supportsCredentialType(credentialInput.getType()) || !(credentialInput instanceof UserCredentialModel))
             return false;
         UserCredentialModel cred = (UserCredentialModel)credentialInput;
-        return repository.updateCredentials(userModel.getUsername(), cred.getChallengeResponse());
+        return userService.updateCredentials(userModel.getUsername(), cred.getChallengeResponse());
     }
 
     @Override
@@ -78,12 +78,12 @@ public class CoreUserStorageProvider implements UserStorageProvider,
     @Override
     public UserModel getUserById(RealmModel realmModel, String s) {
         String externalId = StorageId.externalId(s);
-        return new UserAdapter(session, realmModel, model, repository.findUserById(externalId));
+        return new UserAdapter(session, realmModel, model, userService.findUserById(externalId));
     }
 
     @Override
     public UserModel getUserByUsername(RealmModel realmModel, String s) {
-        User user = repository.findUserByLogin(s);
+        User user = userService.findUserByLogin(s);
         if (user != null)
             return new UserAdapter(session, realmModel, model, user);
         return null;
@@ -91,7 +91,7 @@ public class CoreUserStorageProvider implements UserStorageProvider,
 
     @Override
     public UserModel getUserByEmail(RealmModel realmModel, String s) {
-        User user = repository.findUserByEmail(s);
+        User user = userService.findUserByEmail(s);
         if(user != null)
             return new UserAdapter(session, realmModel, model, user);
         return null;
@@ -99,7 +99,7 @@ public class CoreUserStorageProvider implements UserStorageProvider,
 
     @Override
     public Stream<UserModel> searchForUserStream(RealmModel realmModel, String s) {
-        return repository.findUsers(s).stream().
+        return userService.findUsers(s).stream().
                 map(user -> new UserAdapter(session, realmModel, model, user));
     }
 

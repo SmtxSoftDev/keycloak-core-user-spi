@@ -1,4 +1,4 @@
-package application.repositories;
+package infrastructure.repositories;
 
 import domain.entities.User;
 import domain.interfaces.IUserRepository;
